@@ -11,7 +11,7 @@
             </div>
             <ul class="links">
                 <li><i class="date"> </i><span
-                            class="icon_text">{{ $article->created_at->toFormattedDateString() }}</span></li>
+                            class="icon_text">{{ $article->created_at->toDayDateTimeString() }}</span></li>
                 <li><a href="#"><i class="admin"> </i><span class="icon_text">{{ $article->author->name }}</span></a>
                 </li>
                 <li class="last"><a href="#"><i class="permalink"> </i><span class="icon_text">Permalink</span></a></li>
@@ -21,7 +21,8 @@
                 <li><i class="tags"> </i><span class="icon_text">No tags</span></li>
             </ul>
             <ul class="links_bottom">
-                <li><a href="#"><i class="comments"> </i><span class="icon_text">{{ $article->comments()->count() }}</span></a></li>
+                <li><a href="#"><i class="comments"> </i><span
+                                class="icon_text">{{ $article->comments()->count() }}</span></a></li>
                 <li><i class="views"> </i><span class="icon_text">{{ $article->view_count }}</span></li>
                 <li><i class="likes"> </i><span class="icon_text">12</span></li>
             </ul>

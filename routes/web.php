@@ -17,6 +17,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('search', 'SearchController@index');
+
 Route::resource('articles', 'ArticleController');
 
 Route::get('most-read', 'PageController@mostRead')->name('most-read');

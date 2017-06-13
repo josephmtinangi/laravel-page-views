@@ -15,4 +15,15 @@ class Article extends Model
     {
         return $this->hasMany(Comment::class);
     }
+
+    public function scopeSearchByKeyword($query, $keyword)
+    {
+        if ($keyword != '') {
+            $query->where(function ($query) use ($keyword) {
+                $query->where("title", "LIKE", "%$keyword%")
+                    ->orWhere("body", "LIKE", "%$keyword%");
+            });
+        }
+        return $query;
+    }
 }

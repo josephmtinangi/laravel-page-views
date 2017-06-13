@@ -53,8 +53,8 @@
                         <li><a href="#"><i class="twt"> </i></a></li>
                         <li>
                             <div class="search2">
-                                <form>
-                                    <input type="text" value="Search.." onfocus="this.value = '';"
+                                <form action="/search">
+                                    <input type="text" name="q" value="Search.." onfocus="this.value = '';"
                                            onblur="if (this.value == '') {this.value = 'Search..';}">
                                     <input type="submit" value="">
                                 </form>
