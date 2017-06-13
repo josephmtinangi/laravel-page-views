@@ -38,6 +38,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ route('articles.index') }}">Articles</a></li>
+                    <li><a href="{{ route('most-read') }}">Most Read</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

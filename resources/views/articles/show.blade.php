@@ -14,7 +14,7 @@
                     <div class="panel-footer">
                         <span class="badge">{{ $view_count = $article->view_count }}</span> {{ str_plural('View', $view_count) }}
                     </div>
-                    
+
                 </div>
 
             </div>
