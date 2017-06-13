@@ -31,7 +31,7 @@
                 @foreach($article->comments as $comment)
                     <div class="comments-main">
                         <div class="col-md-2 cmts-main-left">
-                            <img src="https://www.gravatar.com/avatar//{{ md5(strtolower(trim($comment->email))) }}"
+                            <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(trim($comment->email))) }}"
                                  alt="">
                         </div>
                         <div class="col-md-10 cmts-main-right">

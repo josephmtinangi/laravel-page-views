@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\User;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -15,7 +16,8 @@ class PageController extends Controller
 
     public function about()
     {
-        return view('pages.about');
+        $authors = User::latest()->get();
+        return view('pages.about', compact('authors'));
     }
 
     public function contact()
