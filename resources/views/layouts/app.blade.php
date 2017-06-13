@@ -11,74 +11,130 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
+    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <script type="application/x-javascript"> addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        } </script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="/js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            size_li = $("#myList li").size();
+            x = 3;
+            $('#myList li:lt(' + x + ')').show();
+            $('#loadMore').click(function () {
+                x = (x + 1 <= size_li) ? x + 1 : size_li;
+                $('#myList li:lt(' + x + ')').show();
+            });
+            $('#showLess').click(function () {
+                x = (x - 1 < 0) ? 1 : x - 1;
+                $('#myList li').not(':lt(' + x + ')').hide();
+            });
+        });
+    </script>
 </head>
 <body>
 <div id="app">
-    <nav class="navbar navbar-default navbar-static-top">
+
+    <!-- header -->
+    <div class="banner">
         <div class="container">
-            <div class="navbar-header">
-
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-            </div>
-
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ route('articles.index') }}">Articles</a></li>
-                    <li><a href="{{ route('most-read') }}">Most Read</a></li>
-                </ul>
-
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">Login</a></li>
-                        <li><a href="{{ route('register') }}">Register</a></li>
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-                               aria-expanded="false">
-                                {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
-
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        Logout
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                          style="display: none;">
-                                        {{ csrf_field() }}
-                                    </form>
-                                </li>
-                            </ul>
+            <div class="header">
+                <div class="logo">
+                    <a href="/"><img src="http://lorempixel.com/261/100/nature/5" class="img-responsive" alt=""/></a>
+                </div>
+                <div class="header-right">
+                    <ul>
+                        <li><a href="#"><i class="fb"> </i></a></li>
+                        <li><a href="#"><i class="twt"> </i></a></li>
+                        <li>
+                            <div class="search2">
+                                <form>
+                                    <input type="text" value="Search.." onfocus="this.value = '';"
+                                           onblur="if (this.value == '') {this.value = 'Search..';}">
+                                    <input type="submit" value="">
+                                </form>
+                            </div>
                         </li>
-                    @endif
-                </ul>
+                        <div class="clearfix"></div>
+                    </ul>
+
+                </div>
+                <div class="clearfix"></div>
             </div>
+        @include('partials.navbar')
+
+        <!-- script-for-nav -->
+            <script>
+                $("span.menu").click(function () {
+                    $(".head-nav ul").slideToggle(300, function () {
+                        // Animation complete.
+                    });
+                });
+            </script>
+            <!-- script-for-nav -->
         </div>
-    </nav>
+    </div>
+    <!-- header -->
 
     @yield('content')
 </div>
 
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="col-md-3 copy">
+            <div class="top1">
+                <i class="ham"></i>
+            </div>
+            <div class="top2">
+                <h6>Copyrights &copy; {{ date('Y') }} {{ Config('app.name') }}</h6>
+                <p>All rights reserved</p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-3 copy">
+            <div class="top1">
+                <i class="men"></i>
+            </div>
+            <div class="top2">
+                <h6>About: </h6>
+                <p>
+                    Blog like a boss
+                </p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-3 copy">
+            <div class="top1">
+                <i class="app"></i>
+            </div>
+            <div class="top2">
+                <h6>Images From: </h6>
+                <p><a href="#"> Images From:</a></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="col-md-3 copy">
+            <div class="top1">
+                <i class="lik"></i>
+            </div>
+            <div class="top2">
+                <h6>Website </h6>
+                <p><a href="#"> Website</a></p>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+<!-- footer -->
+
 <!-- Scripts -->
-<script src="{{ asset('js/app.js') }}"></script>
+
 </body>
 </html>

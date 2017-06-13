@@ -12,4 +12,24 @@ class PageController extends Controller
         $articles = Article::orderBy('view_count', 'desc')->paginate(20);
         return view('articles.index', compact('articles'));
     }
+
+    public function about()
+    {
+        return view('pages.about');
+    }
+
+    public function contact()
+    {
+        return view('pages.contact');
+    }
+
+    public function photos()
+    {
+        return view('pages.photos');
+    }
+
+    public function archives()
+    {
+        return view('pages.archives');
+    }
 }

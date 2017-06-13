@@ -20,3 +20,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('articles', 'ArticleController');
 
 Route::get('most-read', 'PageController@mostRead')->name('most-read');
+
+Route::get('contact', 'PageController@contact')->name('contact');
+Route::get('about', 'PageController@about')->name('about');
+Route::get('photos', 'PageController@photos')->name('photos');
+Route::get('archives', 'PageController@archives')->name('archives');
