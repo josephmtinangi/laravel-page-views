@@ -24,8 +24,8 @@
                                                             alt=""></a>
                                                 <p>{{ str_limit($article->content, 100) }}</p>
                                                 <p>
-                                                    <span class="badge">{{ $article->comments()->count() }}</span>
-                                                    Comments
+                                                    <span class="badge">{{ $comments_count = $article->comments()->count() }}</span>
+                                                    {{ str_plural('Comment', $comments_count) }}
                                                     <span class="badge">{{ $article->view_count }}</span> Views
                                                 </p>
                                                 <a href="{{ route('articles.show', $article->id) }}" class="link">Read
