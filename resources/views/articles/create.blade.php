@@ -9,13 +9,15 @@
 
                 @include('errors.list')
 
-                <form method="POST" action="{{ route('articles.store') }}">
+                <form method="POST" action="{{ route('articles.store') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <input type="text" name="title" value="TITLE" onfocus="this.value='';"
                            onblur="if (this.value == '') {this.value = 'TITLE';}">
                     <textarea cols="70" rows="10" name="content" onfocus="this.value='';"
                               onblur="if (this.value == '') {this.value = 'CONTENT';}">CONTENT </textarea>
-                    <input type="file" name="user_file">
+                    <br>
+                    <label for="image">Image</label>
+                    <input type="file" name="image">
                     <div class="clearfix"></div>
                     <input type="submit" value="PUBLISH"/>
 

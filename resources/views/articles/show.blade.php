@@ -4,7 +4,7 @@
     <div class="details">
         <div class="container">
             <div class="det_pic">
-                <img src="{{ $article->image }}" class="img-responsive" alt="">
+                <img src="{{ public_path($article->image) }}" class="img-responsive" alt="">
             </div>
             <div class="det_text">
                 {!! $article->content !!}

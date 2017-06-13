@@ -45,10 +45,18 @@ class ArticleController extends Controller
         $this->validate($request, [
             'title' => 'string|required',
             'content' => 'required',
+            'image' => 'required',
         ]);
 
         $article = new Article();
-        $article->image = '#';
+
+        if ($request->hasFile('image')) {
+            if ($request->file('image')->isValid()) {
+                $article->image = $request->file('image')->store('images');
+            }
+        }
+
+
         $article->title = $request->input('title');
         $article->content = $request->input('content');
 
