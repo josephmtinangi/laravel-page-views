@@ -17,7 +17,7 @@
                                         <div class="l_g_r">
                                             <div class="dapibus">
                                                 <h2>{{ $article->title }}</h2>
-                                                <p class="adm">Posted by <a href="#">Admin</a>
+                                                <p class="adm">Posted by <a href="#">{{ $article->author->name }}</a>
                                                     | {{ $article->created_at->diffForHumans() }}</p>
                                                 <a href="{{ route('articles.show', $article->id) }}"><img
                                                             src="{{ $article->image }}" class="img-responsive"
