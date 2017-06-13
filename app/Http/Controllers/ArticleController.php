@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Article;
+use App\Events\ArticleOpened;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -47,6 +48,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
+        event(new ArticleOpened($article));
         return view('articles.show', compact('article'));
     }
 

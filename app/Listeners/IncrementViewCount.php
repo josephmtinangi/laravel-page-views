@@ -21,11 +21,11 @@ class IncrementViewCount
     /**
      * Handle the event.
      *
-     * @param  ArticleOpened  $event
+     * @param  ArticleOpened $event
      * @return void
      */
     public function handle(ArticleOpened $event)
     {
-        //
+        $event->article->increment('view_count');
     }
 }
