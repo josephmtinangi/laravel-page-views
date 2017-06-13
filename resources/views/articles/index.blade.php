@@ -6,7 +6,9 @@
         <div class="container">
             <div class="load_more">
                 <ul id="myList">
+                @php $i = 0 @endphp
                 @foreach($articles->chunk(3) as $articleSet)
+                    @php $i++ @endphp
                     <!-- These are our grid blocks -->
                         <li>
                             <div class="l_g">
@@ -31,7 +33,9 @@
                                     </div>
                                 @endforeach
                                 <div class="col-md-3 integ">
-                                    @include('partials.sidebar')
+                                    <div class="l_g_r">
+                                        @include('partials.sidebar')
+                                    </div>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
