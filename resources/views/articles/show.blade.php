@@ -8,7 +8,7 @@
                     <div class="panel-heading">{{ $article->title }}</div>
 
                     <div class="panel-body">
-                        {{ $article->content }}
+                        {!! $article->content !!}
                     </div>
 
                     <div class="panel-footer">

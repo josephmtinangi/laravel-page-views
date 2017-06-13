@@ -9,7 +9,7 @@
                         <div class="panel-heading">{{ $article->title }}</div>
 
                         <div class="panel-body">
-                            {{ str_limit($article->content, 400) }}
+                            {!! str_limit($article->content, 400) !!}
 
                             <br><br>
 

@@ -24,13 +24,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Article::class, function (Faker\Generator $faker) {
-    static $password;
 
     return [
+        'image' => $faker->imageUrl(),
         'title' => $faker->sentence,
-        'content' => $faker->paragraph,
+        'content' => implode($faker->paragraphs(6), "<br><br>"),
         'user_id' => function () {
-        	return factory('App\User')->create()->id;
+            return factory('App\User')->create()->id;
         },
     ];
 });
