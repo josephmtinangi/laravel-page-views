@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +21,6 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::latest()->get();
-
         return view('articles.index', compact('articles'));
     }
 
@@ -27,7 +31,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        //
+        return view('articles.create');
     }
 
     /**
@@ -38,7 +42,19 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'string|required',
+            'content' => 'required',
+        ]);
+
+        $article = new Article();
+        $article->image = '#';
+        $article->title = $request->input('title');
+        $article->content = $request->input('content');
+
+        auth()->user()->articles()->save($article);
+
+        return redirect('articles/' . $article->id);
     }
 
     /**
