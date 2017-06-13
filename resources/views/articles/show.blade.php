@@ -55,15 +55,20 @@
                 <div class="leave">
                     <h4>Leave a comment</h4>
                 </div>
-                <form id="commentform">
-                    <label for="author">Name</label>
-                    <input id="author" name="author" type="text" value="" size="30" aria-required="true">
+
+                @include('errors.list')
+
+                <form method="POST" action="{{ route('articles.comments.store', $article->id) }}" id="commentform">
+                    {{ csrf_field() }}
+
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" value="" size="30" aria-required="true">
                     <label for="email">Email</label>
                     <input id="email" name="email" type="text" value="" size="30" aria-required="true">
                     <label for="url">Website</label>
                     <input id="url" name="url" type="text" value="" size="30">
                     <label for="comment">Comment</label>
-                    <textarea></textarea>
+                    <textarea name="body"></textarea>
                     <div class="clearfix"></div>
                     <input name="submit" type="submit" id="submit" value="Send">
                     <div class="clearfix"></div>

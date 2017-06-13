@@ -21,6 +21,8 @@ Route::get('search', 'SearchController@index');
 
 Route::resource('articles', 'ArticleController');
 
+Route::resource('articles.comments', 'CommentController');
+
 Route::get('most-read', 'PageController@mostRead')->name('most-read');
 
 Route::get('contact', 'PageController@contact')->name('contact');
